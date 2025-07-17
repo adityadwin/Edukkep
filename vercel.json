@@ -2,25 +2,30 @@
     "version": 2,
     "builds": [
         {
-            "src": "public/index.php",
+            "src": "/api/public/index.php",
             "use": "vercel-php@0.6.0"
+        },
+        {
+            "src": "/public/**",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
-            "handle": "filesystem"
+            "src": "/(css|js|images|assets|favicon.ico|robots.txt)(.*)",
+            "dest": "/public/$1$2"
         },
         {
             "src": "/(.*)",
-            "dest": "/public/index.php"
+            "dest": "/api/public/index.php"
         }
     ],
     "env": {
-      "APP_NAME": "Edukkep",
-      "APP_ENV": "production",
-      "APP_DEBUG": "false",
-      "APP_URL": "https://nama-proyek-anda.vercel.app",
-      "VIEW_COMPILED_PATH": "/tmp/views",
-      "SESSION_DRIVER": "array"
+        "APP_NAME": "Edukkep",
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "APP_URL": "https://nama-proyek-anda.vercel.app",
+        "VIEW_COMPILED_PATH": "/tmp/views",
+        "SESSION_DRIVER": "array"
     }
 }
